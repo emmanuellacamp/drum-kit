@@ -1,15 +1,18 @@
+//deceting  button press
 const buttonClicked = document.querySelectorAll(".drum")
 
 for (let i = 0; i < buttonClicked.length; i++){
   buttonClicked[i].addEventListener("click", function() {
    let buttonInnerHTML = this.innerHTML;
    makeSound(buttonInnerHTML);
+   buttonAnimation(buttonInnerHTML)
   })
 }
 
-
+//deceting keyboard press
 document.addEventListener("keydown", function(event){
   makeSound(event.key)
+  buttonAnimation(event.key)
 })
 
 function makeSound(key){
@@ -56,9 +59,14 @@ function makeSound(key){
    }
   }
 
+function buttonAnimation(currentKey){
+  let activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
 
-//var audio = new Audio ('audio_file.mp3);
-//audio.play();
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  }, 100)
+}
 
 
 
