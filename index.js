@@ -1,10 +1,20 @@
 const buttonClicked = document.querySelectorAll(".drum")
 
 for (let i = 0; i < buttonClicked.length; i++){
-  buttonClicked[i].addEventListener("click", function (){
-   let buttonInnerHtml = this.innerHTML;
+  buttonClicked[i].addEventListener("click", function() {
+   let buttonInnerHTML = this.innerHTML;
+   makeSound(buttonInnerHTML);
+  })
+}
 
-   switch (buttonInnerHtml) {
+
+document.addEventListener("keydown", function(event){
+  makeSound(event.key)
+})
+
+function makeSound(key){
+
+  switch (key) {
     case "w":
       let tom1 = new Audio("sounds/tom-1.mp3")
       tom1.play();
@@ -41,11 +51,10 @@ for (let i = 0; i < buttonClicked.length; i++){
       break;
 
     default:
-        console.log(buttonInnerHtml)
+        console.log(buttonInnerHTML)
       break;
    }
-  })
-}
+  }
 
 
 //var audio = new Audio ('audio_file.mp3);
